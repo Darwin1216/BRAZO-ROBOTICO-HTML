@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BRAZO ROBOTICO</title>
+    <style>
+        h1 {
+            font-family: arial;
+            font-size: 20px;
+            text-align: center;
+            background: #eaefbc;
+
+            padding: 7px;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #000000;
+             background-image: url('fondo.jpg');
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+        input {
+            width: 50%;
+        }
+
+        .cards .card {
+            font-family: arial;
+            font-size: 20px;
+            text-align: center;
+            background: #eaefbc;
+
+            padding: 7px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>BRAZO ROBOTICO ESP8266HTML</h1>
+    <br><br>
+
+    <div class="container">
+
+        <div class="leftside wfxc">
+            <div class="slidecontainer">
+                <label>GIRO</label>
+                <input type="range" min="0" max="180" value="0" id="myRange">
+            </div>
+
+            <div class="slidecontainer">
+                <label>PINZA</label>
+                <input type="range" min="0" max="35" value="0" id="myRange1">
+            </div>
+        </div>
+        <div class="rightside wfxc">
+            <div class="slidecontainer">
+                <label>ARRIBA - ABAJO</label>
+                <input type="range" min="50" max="150" value="50" id="myRange2" />
+            </div>
+
+            <div class="slidecontainer">
+                <label>ADELANTE - ATRAS</label>
+                <input type="range" min="40" max="120" value="40" id="myRange3" />
+
+
+                <br><br>
+                <br><br>
+                <br><br>
+
+                <section class="clientes contenedor">
+
+
+                    <div class="cards">
+                        <div class="card">
+
+                            <div class="contendeor-texto-card">
+
+                                <h2 class="titulo">NUESTRO PROYECTO</h2>
+                                <p>Nuestro proyecto esta enfocado en la utilizacion un diseñador web
+                                    en este caso  HTML donde hemos creado un diseño para el
+                                    funcionamiento
+                                    del brazo ribotico a nivel educativo y de igual manera utilizamos lo que es la
+                                    declaracion
+                                    de codigo dentro de ARDUINO IDE conectado a la ESP8266 SSSla cual se conecta mediante
+                                    WIFI.
+
+                                </p>
+                            </div>
+
+
+                        </div>
+                        
+                        <br><br>
+                        <h2 class="titulo-final">&copy; GRUPO 2 | THUNDERSYSTEM</h2>
+                        <script>
+                            function sendData(pos1, pos2, pos3, pos4) {
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        console.log(this.responseText);
+                                    }
+                                };
+                                xhttp.open("GET", "setPOS?servoPOS1=" + pos1 + "&servoPOS2=" + pos2 + "&servoPOS3=" + pos3 + "&servoPOS4=" + pos4, true);
+                                xhttp.send();
+                            }
+
+                            var s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+
+                            var slider1 = document.getElementById("myRange");
+                            var slider2 = document.getElementById("myRange1");
+                            var slider3 = document.getElementById("myRange2");
+                            var slider4 = document.getElementById("myRange3");
+                            //var output = document.getElementById("demo");
+                            //output.innerHTML = slider.value;
+
+                            slider1.oninput = function () {
+                                //output.innerHTML = this.value;
+                                s1 = slider1.value;
+                                sendData(s1, s2, s3, s4);
+                            }
+                            slider2.oninput = function () {
+                                //output.innerHTML = this.value;
+                                s2 = slider2.value;
+                                sendData(s1, s2, s3, s4);
+                            }
+                            slider3.oninput = function () {
+                                //output.innerHTML = this.value;
+                                s3 = slider3.value;
+                                sendData(s1, s2, s3, s4);
+                            }
+                            slider4.oninput = function () {
+                                //output.innerHTML = this.value;
+                                s4 = slider4.value;
+                                sendData(s1, s2, s3, s4);
+                            }
+                        </script>
+
+</body>
+
+</html>
